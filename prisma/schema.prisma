@@ -22,7 +22,29 @@ model User {
     emailAddress String @unique
 
     credits Int @default(150)
+    userToProjects UserToProject[]
 
 }
 
 
+model Project {
+  id            String          @id @default(cuid())
+  name          String
+  githubUrl     String
+  githubToken   String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  userToProjects UserToProject[]
+}
+
+model UserToProject {
+  id        String   @id @default(cuid())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  project   Project  @relation(fields: [projectId], references: [id])
+  projectId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, projectId])
+}
