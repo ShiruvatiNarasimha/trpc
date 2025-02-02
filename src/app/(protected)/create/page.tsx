@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import useRefetch from "@/hooks/use-refetch";
 import { api } from "@/trpc/react";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -16,6 +17,7 @@ type FormInput = {
 const CreatePage = () => {
   const { register, handleSubmit, reset } = useForm<FormInput>();
   const createProject = api.project.createProject.useMutation();
+  const refetch = useRefetch();
 
   function onSubmit(data: FormInput) {
     createProject.mutate(
@@ -27,7 +29,7 @@ const CreatePage = () => {
       {
         onSuccess: () => {
           toast.success("Project created successfully");
-          reset();
+          refetch();
         },
         onError: () => {
           toast.error("Failed to create project");
@@ -44,7 +46,7 @@ const CreatePage = () => {
           <h1 className="text-2xl font-semibold">
             Link your GitHub Repository
           </h1>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-sm text-muted-foreground">
             Enter the URL of your repository to link it to GitHub.AI
           </p>
         </div>

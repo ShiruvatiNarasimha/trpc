@@ -4,9 +4,13 @@ import React from "react";
 
 const useProject = () => {
   const { data: projects } = api.project.getProjects.useQuery();
-  const [projectId, setProject] = useLocalStorage("dionysus-project", "");
+  const [projectId, setProjectId] = useLocalStorage("dionysus-project", "");
+  const project = projects?.find((project) => project.id === projectId);
   return {
     projects,
+    project,
+    projectId,
+    setProjectId,
   };
 };
 
