@@ -34,6 +34,7 @@ model Project {
   githubToken   String?
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
+  deletedAt   DateTime?
   userToProjects UserToProject[]
 }
 
