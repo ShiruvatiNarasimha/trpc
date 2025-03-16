@@ -22,7 +22,6 @@ const DashboardPage = () => {
                   className="inline-flex items-center text-center text-white/80 hover:underline"
                 >
                   {project?.githubUrl}
-                  <ExternalLink className="ml-1 size-4" />
                 </Link>
               </p>
             </div>
