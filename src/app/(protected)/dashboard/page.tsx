@@ -21,7 +21,6 @@ const DashboardPage = () => {
                   href={project?.githubUrl ?? ""}
                   className="inline-flex items-center text-center text-white/80 hover:underline"
                 >
-                  {project?.githubUrl}
                 </Link>
               </p>
             </div>
