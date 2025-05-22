@@ -12,9 +12,7 @@ model User {
     createAt  DateTime  @default(now())
     updatedAt  DateTime   @updatedAt
 
-    imageUrl  String?
-    firstName  String?
-    lastName   String?
+ 
 
     emailAddress String @unique
 
